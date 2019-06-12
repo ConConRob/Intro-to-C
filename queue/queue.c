@@ -79,6 +79,10 @@ int dequeue(Queue *q)
     for (int i = 0; i < q->length; i++)
     {
         *(q->storage + i) = *(q->storage + i + 1);
+        if (*(q->storage + i) == NULL)
+        {
+            break;
+        }
     }
 
     return val;

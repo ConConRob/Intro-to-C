@@ -45,7 +45,7 @@ This sprint is structured very much like how your introductory JavaScript sprint
 
 **Stretch Goal Problems**
 
-- [ ] queue
+- [x] queue
 - [ ] quicksort
 - [ ] hangman
 
