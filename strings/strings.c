@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character array s (as a pointer), return the number of 
@@ -13,14 +14,13 @@ int string_length(char *s)
     int i = 0;
     while (free)
     {
-        printf(" %c", *(s + i));
         if ('\0' == *(s + i))
         {
             break;
         }
         i++;
     }
-    return ++i;
+    return i;
 }
 
 /*
@@ -31,6 +31,13 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    int len = strlen(s);
+    for (int i = 0; i <= len; ++i)
+    {
+        *(rv + i) = *(s + (strlen(s) - i - 1));
+    }
+    *(rv + len + 1) = '\0';
+    return rv;
 }
 
 #ifndef TESTING
@@ -42,7 +49,7 @@ int main(void)
     char rv[512];
 
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    // printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
 }
