@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character pointer x (that points to an array of chars), and a
@@ -15,7 +17,13 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    // loop till '\0'
+    int len = strlen(y);
+    for (int i = 0; i <= len; i++)
+    {
+        *(x + i) = *(y + i);
+    }
+    return NULL;
 }
 
 /*
@@ -28,7 +36,17 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, char c)
 {
-
+    // loop looking for match
+    // on match return pointer
+    int len = strlen(str);
+    for (int i = 0; i < len; i++)
+    {
+        if (*(str + i) == c)
+        {
+            return str + i;
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -41,12 +59,35 @@ char *find_char(char *str, char c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int len_haystack = strlen(haystack);
+    int len_needle = strlen(needle);
+    for (int i = 0; i < len_haystack; i++)
+    {
+        int j = 0;
+        while (free)
+        {
+            if (j == len_needle)
+            {
 
+                return haystack + i;
+            }
+            if (*(haystack + i + j) == *(needle + j))
+            {
+                ++j;
+                continue;
+            }
+            break;
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char buffer[1024];
+    string_copy(buffer, "Hello!");
+    printf("%s\n", buffer); // Prints "Hello!"
     char *found_char = find_char("hello", 'e');
     char *found_string = find_string("world", "or");
 
