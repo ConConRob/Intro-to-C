@@ -32,6 +32,8 @@ Queue *createQueue(unsigned capacity)
     queue->length = 0;
     queue->capacity = capacity;
     queue->storage = malloc(sizeof(int) * capacity);
+
+    return queue;
 }
 
 /*
@@ -44,7 +46,6 @@ void enqueue(Queue *q, int item)
     // if the len is = capacity double storage
     if (q->capacity == q->length)
     {
-        printf("here\n");
         // double capacity
         q->capacity = q->capacity * 2;
         // make a new pointer
@@ -67,6 +68,20 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
+    if (q->length == 0)
+    {
+        return 0;
+    }
+    // take off the front
+    int val = *(q->storage);
+    // shift everything left by one till
+    q->length--;
+    for (int i = 0; i < q->length; i++)
+    {
+        *(q->storage + i) = *(q->storage + i + 1);
+    }
+
+    return val;
 }
 
 /*
@@ -75,37 +90,45 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    if (q->storage != NULL)
+    {
+        free(q->storage);
+    }
+    if (q != NULL)
+    {
+        free(q);
+    }
 }
 
 #ifndef TESTING
 int main(void)
 {
     Queue *q = createQueue(4);
-
+    // printf("%p\n", q);
     enqueue(q, 1);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage));
     enqueue(q, 2);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage + 1));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage + 1));
     enqueue(q, 3);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage + 1));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage + 1));
     enqueue(q, 4);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage + 1));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage + 1));
     enqueue(q, 5);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage + 1));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage + 1));
     enqueue(q, 6);
-    printf("cap %i\n", q->capacity);
-    printf("len %i\n", q->length);
-    printf("%d\n", *(q->storage + 1));
+    // printf("cap %i\n", q->capacity);
+    // printf("len %i\n", q->length);
+    // printf("%d\n", *(q->storage + 1));
 
     printf("%d\n", dequeue(q));
     printf("%d\n", dequeue(q));
