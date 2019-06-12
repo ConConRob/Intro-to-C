@@ -39,7 +39,7 @@ This sprint is structured very much like how your introductory JavaScript sprint
 
 - [x] fizzbuzz
 - [x] strings
-- [ ] pointers
+- [x] pointers
 - [ ] malloc
 - [ ] structs
 
