@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character array s (as a pointer), return the number of 
@@ -9,7 +10,17 @@
 */
 int string_length(char *s)
 {
-
+    // loop the pointer untill '\0'
+    int i = 0;
+    while (free)
+    {
+        if ('\0' == *(s + i))
+        {
+            break;
+        }
+        i++;
+    }
+    return i;
 }
 
 /*
@@ -20,7 +31,13 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
-
+    int len = strlen(s);
+    for (int i = 0; i <= len; ++i)
+    {
+        *(rv + i) = *(s + (strlen(s) - i - 1));
+    }
+    *(rv + len + 1) = '\0';
+    return rv;
 }
 
 #ifndef TESTING
@@ -37,4 +54,3 @@ int main(void)
     return 0;
 }
 #endif
-    
